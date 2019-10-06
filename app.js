@@ -32,7 +32,8 @@ function readOutLoud(message){
 
 	}
 	if(message.include('Comment sa va?')){
-		speech.text = "bien merci"
+		speech.text = "bien merci";
+	}
 
 	
 	speech.volume = 1;
