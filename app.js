@@ -12,12 +12,6 @@ recognition.onstart = function () {
 	console.log('voice is activated, you can speak to micro');
 };
 
-recognition.onresult = function(event) {
-	const current = event.resultIndex;
-	const transcript = event.results[current][0].transcript;
-	content.textContent = transcript;
-	readOutLoud(transcript);
-};
 
 btn.addEventListener('click', () => {
 	recognition.start();
@@ -31,7 +25,7 @@ function readOutLoud(message){
 		speech.text = ft;
 
 	}
-	if(message.include('Comment sa va?')){
+	if(message.includes('Comment sa va?')){
 		speech.text = "bien merci";
 	}
 
@@ -42,4 +36,10 @@ function readOutLoud(message){
 
 	window.speechSynthesis.speak(speech);
 }
+recognition.onresult = function(event) {
+	const current = event.resultIndex;
+	const transcript = event.results[current][0].transcript;
+	content.textContent = transcript;
+	readOutLoud(transcript);
+};
 
